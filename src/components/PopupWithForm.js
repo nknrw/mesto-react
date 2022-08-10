@@ -20,19 +20,14 @@ export default function PopupWithForm({ title, isOpen, onClose, children, name, 
 				className="popup__form"
 				onClick={(e) => {
 					e.stopPropagation();
-				}}
-			>
+				}}>
 				<button
 					className="popup__close-button"
 					type="button"
 					onClick={onClose}>
-
 				</button>
-
 				<h3 className="popup__title">{title}</h3>
-
 				{children}
-
 				<button
 					className="popup__submit-button"
 					type="submit">

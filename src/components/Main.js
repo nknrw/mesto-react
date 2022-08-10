@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import Card from "./Card";
 import api from "../utils/Api";
 
-
 export default function Main(props) {
 	const [cards, setCards] = useState("");
 	const [userName, setUserName] = useState("");
@@ -19,7 +18,8 @@ export default function Main(props) {
 			}).catch((err) => {
 				console.log(err);
 			});
-	}, []);
+		}, []
+	);
 
     return(
         <main className="content">
@@ -29,8 +29,7 @@ export default function Main(props) {
 					<img
 						className="profile__avatar"
 						src={userAvatar}
-						alt={userName}
-					/>
+						alt={userName}/>
 					<div className="profile__avatar-overlay">
 						<button className="profile__avatar-button" onClick={props.onEditAvatar}></button>
 					</div>
@@ -43,8 +42,7 @@ export default function Main(props) {
 				<button type="button" className="profile__add-button" onClick={props.onAddPlace}></button>
 			</section>
 			<section className="elements">
-				{cards && cards.map((newCard) => {
-					return (
+				{cards && cards.map((newCard) => (
 						<Card
 							card={newCard}
 							key={newCard._id}
@@ -52,7 +50,7 @@ export default function Main(props) {
 							link={newCard.link}
 							onCardClick={props.onCardClick}
 							likes={newCard.likes.length} />
-					)}
+					)
 				)}
 			</section>
 		</main>
