@@ -79,9 +79,9 @@ export default function App() {
 			<PopupWithForm
 				isOpen={isAddPlacePopupOpen}
 				onClose={closeAllPopups}
-				title={"Новое место"}
-				name={"form-card"}
-				onSubmit={"Создать"}>
+				title="Новое место"
+				name="form-card"
+				onSubmit="Создать">
 				<input
 					id="title-input"
 					className="popup__input popup__input_title"
@@ -105,9 +105,9 @@ export default function App() {
 			<PopupWithForm
 				isOpen={isEditAvatarPopupOpen}
 				onClose={closeAllPopups}
-				title={"Редактировать аватар"}
-				name={"form-avatar"}
-				onSubmit={"Сохранить"}
+				title="Редактировать аватар"
+				name="form-avatar"
+				onSubmit="Сохранить"
 			>
 				<input
 					className="popup__input popup__input_avatar"
