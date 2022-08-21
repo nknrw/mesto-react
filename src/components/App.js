@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer'
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/Api";
@@ -18,7 +17,7 @@ export default function App() {
 	const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
 	const [selectedCard, setSelectedCard] = useState(null);
 	const [currentUser, setCurrentUser] = useState({});
-	const [cards, setCards] = useState("");
+	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
 		api.getInitialCards()
@@ -32,19 +31,22 @@ export default function App() {
 
 	function handleCardLike(card) {
 		const isLiked = card.likes.some((like) => like._id === currentUser._id);
-	//отправляем запрос в api, получаем обновленные данные карточки, находим нужную карочку и обновляем
 		api.changeLikeCardStatus(card._id, isLiked)
 			.then((newCard) => {
 				setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-		});
+		})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 	function handleCardDelete(card) {
-	//Отправляем запрос в API, получаем обновлённые данные карточки, находим нужную карточку и обновляем
 		api.deleteCard(card._id).then(() => {
 			setCards((state) => state.filter((c) => (c._id !== card._id)));
-		});
+		})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
-
 
 	useEffect(() => {
 		api.getUserInfo()

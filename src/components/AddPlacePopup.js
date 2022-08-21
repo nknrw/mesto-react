@@ -13,13 +13,19 @@ export default function AddPlacePopup(props) {
         setCardLink(e.target.value);
     };
 
+    React.useEffect(() => {
+        if (props.isOpen) {
+            setCardName("");
+            setCardLink("");
+        }
+    }, [props.isOpen]);
+
     function handleSubmit(e) {
         e.preventDefault();
         props.onAddPlace({
             name: cardName,
             link: cardLink
         });
-        e.target.reset();
     };
 
     return (

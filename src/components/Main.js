@@ -1,6 +1,5 @@
-import React, {useState, useEffect, useContext} from "react";
+import { useContext } from "react";
 import Card from "./Card";
-import api from "../utils/Api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main(props) {
@@ -28,7 +27,7 @@ export default function Main(props) {
 			</section>
 			{/* <!-- Карточки --> */}
 			<section className="elements">
-				{props.cards && props.cards.map((newCard) => (
+				{props.cards?.map((newCard) => (
 						<Card
 							card={newCard}
 							key={newCard._id}

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ImagePopup({ card, onClose }) {
-	const className = `popup popup_fullscreen ${card ? "popup_active" : ""}`;
+	const className = `popup popup_fullscreen ${card && "popup_active"}`;
 
 	return (
 		<div
@@ -16,12 +16,14 @@ export default function ImagePopup({ card, onClose }) {
 					<button
 						className="popup__close-button"
 						type="button"
-						onClick={onClose}>
+						onClick={onClose}
+					>
 					</button>
 					<img
 						className="popup__image"
-						src={card ? card.link : ``}
-						alt={card ? card.name : ``}/>
+						src={card?.link}
+						alt={card?.name}
+					/>
 					<figcaption className="popup__caption">{card ? card.name : ``}</figcaption>
 				</figure>
 			</div>
