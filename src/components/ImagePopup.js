@@ -11,7 +11,7 @@ export default function ImagePopup({ card, onClose }) {
 				className="popup__image-container"
 				onClick={(event) => {
 				event.stopPropagation();
-			}}>
+				}}>
 				<figure className="popup__figure">
 					<button
 						className="popup__close-button"

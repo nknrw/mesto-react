@@ -54,17 +54,24 @@ class Api {
 			headers: this._headers,
 		}).then((res) => this._getResponseData(res));
 	}
-
-	// Лайки
-	likeCard(cardId, method) {
-		return fetch(`${this._baseUrl}/cards/${cardId}/likes/`, {
-			method: method,
-			headers: this._headers,
-		}).then((res) => this._getResponseData(res));
-	}
 	
+	// Постановка/снятие лайка
+	changeLikeCardStatus(cardId, isLiked) {
+		if (isLiked) {
+			return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+				method: "DELETE",
+				headers: this._headers,
+			}).then(this._getResponseData);
+		} else {
+			return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+				method: "PUT",
+				headers: this._headers,
+			}).then(this._getResponseData);
+		}
+	}
+
 	// Изменение аватара
-	editAvatar(avatar) {
+	setUserAvatar(avatar) {
 		return fetch(`${this._baseUrl}/users/me/avatar`, {
 			method: 'PATCH',
 			headers: this._headers,
